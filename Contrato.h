@@ -27,7 +27,7 @@ public:
 	virtual void setHoraSalida(Hora&);
 	virtual void setTipoSerivico(string);
 	virtual void setFechaInicio(Fecha&) = 0;
-	virtual void  setFechaCese(Fecha&) = 0;
+	virtual void setFechaCese(Fecha&) = 0;
 
 	virtual Hora* getHoraEntrada();
 	virtual Hora* getHoraSalida();

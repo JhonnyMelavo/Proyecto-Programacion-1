@@ -127,6 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Aeronave.h" />
     <ClInclude Include="Contrato.h" />
     <ClInclude Include="Empleado.h" />
     <ClInclude Include="Fecha.h" />
@@ -134,7 +135,9 @@
     <ClInclude Include="Plaza.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Aeronave.cpp" />
     <ClCompile Include="Contrato.cpp" />
+    <ClCompile Include="Empleado.cpp" />
     <ClCompile Include="Fecha.cpp" />
     <ClCompile Include="Hora.cpp" />
     <ClCompile Include="Main.cpp" />

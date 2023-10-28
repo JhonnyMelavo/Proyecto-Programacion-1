@@ -67,7 +67,7 @@ Fecha* ContratoServicios::getFechaCese() { return fechaCese; }
 
 string ContratoServicios::toString() {
 	stringstream s;
-	s << Contrato::toString() << endl << "Tipo de serivico: " << tipoServicio << endl
+	s << Contrato::toString() << endl << "Tipo de servicio: " << tipoServicio << endl
 		<< "Hora Entrada: " << horaEntrada->toString() << endl
 		<< "Hora Salida: " << horaSalida->toString() << endl
 		<< "Periodo de servicio: " << fechaInicio->toString() << " - " << fechaCese->toString() << endl;
