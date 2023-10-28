@@ -2,7 +2,7 @@
 
 int main(){
 	//Contrato Serivico
-	/*
+	
 	Fecha* fec1 = new Fecha(20, 1, 2000);
 	Fecha* fec2 = new Fecha(20, 1, 2003);
 	
@@ -65,6 +65,6 @@ int main(){
 	delete Emp3;
 
 	delete nave1;
-	*/
+	
 	return 0;
 }
