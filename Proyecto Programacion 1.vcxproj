@@ -133,6 +133,7 @@
     <ClInclude Include="Fecha.h" />
     <ClInclude Include="Hora.h" />
     <ClInclude Include="Plaza.h" />
+    <ClInclude Include="Servicio.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Aeronave.cpp" />
@@ -142,6 +143,7 @@
     <ClCompile Include="Hora.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Plaza.cpp" />
+    <ClCompile Include="Servicio.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
