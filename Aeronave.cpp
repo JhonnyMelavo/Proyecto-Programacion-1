@@ -114,6 +114,7 @@ void Militar::setCategoria(string cat) { Categoria = cat; }
 
 double Militar::getVelocidadM() { return VelocidadM; }
 string Militar::getCategoria() { return Categoria; }
+string Militar::getPlaca() { return ""; }
 
 string Militar::toString() {
 	stringstream s;

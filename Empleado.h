@@ -1,6 +1,7 @@
 #pragma once
 #include"Contrato.h"
 #include"Aeronave.h"
+#include"ContContrato.h"
 
 class Empleado {
 protected:
@@ -9,7 +10,7 @@ protected:
 	int edad;
 	Contrato* contrato;
 public:
-	Empleado(string, string, int, Contrato&);
+	Empleado(string, string, int);
 	virtual ~Empleado();
 
 	void setCedula(string);
@@ -31,7 +32,7 @@ class EmpleadoTripulacion: public Empleado {
 protected:
 	Aeronave* nave;
 public:
-	EmpleadoTripulacion(string, string, int, Contrato&, Aeronave&);
+	EmpleadoTripulacion(string, string, int, Aeronave&);
 	virtual ~EmpleadoTripulacion();
 
 	void setAeronave(Aeronave&);
@@ -45,7 +46,7 @@ class Piloto : public EmpleadoTripulacion {
 private:
 	int aniosExp;
 public:
-	Piloto(string, string, int, Contrato&, Aeronave&, int);
+	Piloto(string, string, int, Aeronave&, int);
 	virtual ~Piloto();
 
 	void setAniosExp(int);
@@ -59,7 +60,7 @@ class Copiloto : public EmpleadoTripulacion {
 private:
 	string telefono;
 public:
-	Copiloto(string, string, int, Contrato&, Aeronave&, string);
+	Copiloto(string, string, int, Aeronave&, string);
 	virtual ~Copiloto();
 
 	void setTelefono(string);
@@ -73,7 +74,7 @@ class Azafata : public EmpleadoTripulacion {
 private:
 	string nacionalidad;
 public:
-	Azafata(string, string, int, Contrato&, Aeronave&, string);
+	Azafata(string, string, int, Aeronave&, string);
 	virtual ~Azafata();
 
 	void setNacionalidad(string);
@@ -89,7 +90,7 @@ class EmpleadoAdmi : public Empleado {
 private:
 	string titulo;
 public:
-	EmpleadoAdmi(string, string, int, Contrato&, string);
+	EmpleadoAdmi(string, string, int, string);
 	virtual ~EmpleadoAdmi();
 
 	void setTitulo(string);
@@ -104,7 +105,7 @@ private:
 	string gradoEscolaridad;
 	string areaTrabajo;
 public:
-	Miscelaneo(string, string, int, Contrato&, string, string);
+	Miscelaneo(string, string, int, string, string);
 	virtual ~Miscelaneo();
 
 	void setGradoEscolaridad(string);

@@ -1,13 +1,9 @@
 #include"Empleado.h"
 
-Empleado::Empleado(string ce, string no, int ed, Contrato& con): cedula(ce), nombre(no), edad(ed) {
-	contrato = (Contrato*)&con;
+Empleado::Empleado(string ce, string no, int ed): cedula(ce), nombre(no), edad(ed) {
+	contrato = NULL;
 }
-Empleado::~Empleado() {
-	if (contrato != NULL) {
-		delete contrato;
-	}
-}
+Empleado::~Empleado() {}
 
 void Empleado::setCedula(string ce) { cedula = ce; }
 void Empleado::setNombre(string no) { nombre = no; }
@@ -35,7 +31,7 @@ string Empleado::toString() {
 
 //Tripulacion----------------------------------------------------------------------------------------------------------------------------------
 
-EmpleadoTripulacion::EmpleadoTripulacion(string ce, string no, int ed, Contrato& con, Aeronave& aero): Empleado::Empleado(ce,no,ed,con) {
+EmpleadoTripulacion::EmpleadoTripulacion(string ce, string no, int ed, Aeronave& aero): Empleado::Empleado(ce,no,ed) {
 	nave = (Aeronave*)&aero;
 }
 EmpleadoTripulacion::~EmpleadoTripulacion() {}
@@ -48,7 +44,7 @@ Aeronave* EmpleadoTripulacion::getAeronave() { return nave; }
 
 //Tripulacion: Piloto
 
-Piloto::Piloto(string ce, string no, int ed, Contrato& con, Aeronave& aero, int a) : EmpleadoTripulacion::EmpleadoTripulacion(ce, no, ed, con, aero), aniosExp(a) {}
+Piloto::Piloto(string ce, string no, int ed, Aeronave& aero, int a) : EmpleadoTripulacion::EmpleadoTripulacion(ce, no, ed, aero), aniosExp(a) {}
 Piloto::~Piloto() {}
 
 void Piloto::setAniosExp(int a) { aniosExp = a; }
@@ -63,7 +59,7 @@ string Piloto::toString() {
 
 //Tripulacion: Copiloto
 
-Copiloto::Copiloto(string ce, string no, int ed, Contrato& con, Aeronave& aero, string tel) : EmpleadoTripulacion::EmpleadoTripulacion(ce, no, ed, con, aero), telefono(tel) {}
+Copiloto::Copiloto(string ce, string no, int ed, Aeronave& aero, string tel) : EmpleadoTripulacion::EmpleadoTripulacion(ce, no, ed, aero), telefono(tel) {}
 Copiloto::~Copiloto() {}
 
 void Copiloto::setTelefono(string tel) { telefono = tel; }
@@ -78,7 +74,7 @@ string Copiloto::toString() {
 
 //Tripulacion Azafata
 
-Azafata::Azafata(string ce, string no, int ed, Contrato& con, Aeronave& aero, string nac) : EmpleadoTripulacion::EmpleadoTripulacion(ce, no, ed, con, aero), nacionalidad(nac) {}
+Azafata::Azafata(string ce, string no, int ed, Aeronave& aero, string nac) : EmpleadoTripulacion::EmpleadoTripulacion(ce, no, ed, aero), nacionalidad(nac) {}
 Azafata::~Azafata() {}
 
 void Azafata::setNacionalidad(string nac) { nacionalidad = nac; }
@@ -95,7 +91,7 @@ string Azafata::toString() {
 
 //Administrativo
 
-EmpleadoAdmi::EmpleadoAdmi(string ce, string no, int ed, Contrato& con, string tit) : Empleado::Empleado(ce, no, ed, con), titulo(tit) {}
+EmpleadoAdmi::EmpleadoAdmi(string ce, string no, int ed, string tit) : Empleado::Empleado(ce, no, ed), titulo(tit) {}
 EmpleadoAdmi::~EmpleadoAdmi() {}
 
 void EmpleadoAdmi::setTitulo(string tit) { titulo = tit; }
@@ -110,7 +106,7 @@ string EmpleadoAdmi::toString() {
 
 //Miscelaneo
 
-Miscelaneo::Miscelaneo(string ce, string no, int ed, Contrato& con, string gra, string are) : Empleado::Empleado(ce, no, ed, con), gradoEscolaridad(gra), areaTrabajo(are) {}
+Miscelaneo::Miscelaneo(string ce, string no, int ed, string gra, string are) : Empleado::Empleado(ce, no, ed), gradoEscolaridad(gra), areaTrabajo(are) {}
 Miscelaneo::~Miscelaneo() {}
 
 void Miscelaneo::setGradoEscolaridad(string gra) { gradoEscolaridad = gra; }

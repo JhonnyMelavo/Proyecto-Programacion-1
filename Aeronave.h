@@ -15,6 +15,7 @@ public:
 
 	Fecha* getFechaCreacion();
 	double getDistanciaRecorrida();
+	virtual string getPlaca() = 0;
 
 	virtual string toString();
 };
@@ -86,6 +87,7 @@ public:
 
 	double getVelocidadM();
 	string getCategoria();
+	string getPlaca();
 
 	string toString();
 };
