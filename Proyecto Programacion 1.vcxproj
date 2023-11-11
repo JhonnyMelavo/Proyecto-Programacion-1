@@ -130,11 +130,14 @@
     <ClInclude Include="Aeronave.h" />
     <ClInclude Include="Aeropuerto.h" />
     <ClInclude Include="ContAvion.h" />
+    <ClInclude Include="ContContrato.h" />
     <ClInclude Include="ContEmpleado.h" />
     <ClInclude Include="Contrato.h" />
+    <ClInclude Include="Controladora.h" />
     <ClInclude Include="Empleado.h" />
     <ClInclude Include="Fecha.h" />
     <ClInclude Include="Hora.h" />
+    <ClInclude Include="Interfaz.h" />
     <ClInclude Include="Plaza.h" />
     <ClInclude Include="Servicio.h" />
   </ItemGroup>
@@ -145,9 +148,11 @@
     <ClCompile Include="ContContratos.cpp" />
     <ClCompile Include="ContEmpleados.cpp" />
     <ClCompile Include="Contrato.cpp" />
+    <ClCompile Include="Controladora.cpp" />
     <ClCompile Include="Empleado.cpp" />
     <ClCompile Include="Fecha.cpp" />
     <ClCompile Include="Hora.cpp" />
+    <ClCompile Include="Interfaz.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Plaza.cpp" />
     <ClCompile Include="Servicio.cpp" />

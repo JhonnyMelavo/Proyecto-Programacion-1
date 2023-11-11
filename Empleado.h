@@ -22,6 +22,9 @@ public:
 	string getNombre();
 	int getEdad();
 	Contrato* getContrato();
+	virtual Aeronave* getAeronave() = 0;
+	virtual int getAniosExp() = 0;
+	virtual string getTelefono() = 0;
 
 	string toString();
 };
@@ -37,7 +40,9 @@ public:
 
 	void setAeronave(Aeronave&);
 
-	Aeronave* getAeronave();
+	virtual Aeronave* getAeronave();
+	virtual int getAniosExp() = 0;
+	virtual string getTelefono() = 0;
 
 	virtual string toString() = 0;
 };
@@ -50,9 +55,10 @@ public:
 	virtual ~Piloto();
 
 	void setAniosExp(int);
-	
-	int getAniosExp();
 
+	int getAniosExp();
+	string getTelefono();
+	
 	string toString();
 };
 
@@ -66,7 +72,8 @@ public:
 	void setTelefono(string);
 
 	string getTelefono();
-
+	int getAniosExp();
+	
 	string toString();
 };
 
@@ -80,7 +87,9 @@ public:
 	void setNacionalidad(string);
 
 	string getNacionalidad();
-
+	int getAniosExp();
+	string getTelefono();
+	
 	string toString();
 };
 
@@ -96,6 +105,9 @@ public:
 	void setTitulo(string);
 
 	string getTitulo();
+	Aeronave* getAeronave();
+	int getAniosExp();
+	string getTelefono();
 
 	string toString();
 };
@@ -113,6 +125,9 @@ public:
 
 	string getGradoEscolaridad();
 	string getAreaTrabajo();
+	Aeronave* getAeronave();
+	int getAniosExp();
+	string getTelefono();
 
 	string toString();
 };

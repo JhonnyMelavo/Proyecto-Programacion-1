@@ -1,6 +1,6 @@
 #include"Aeronave.h"
 
-Aeronave::Aeronave(Fecha& fe, double dis): distaciaRecorrida(dis) {
+Aeronave::Aeronave(Fecha& fe, double dis, string pla): distaciaRecorrida(dis), placa(pla) {
 	fechaCreacion = (Fecha*)&fe;
 }
 Aeronave::~Aeronave() {
@@ -16,10 +16,11 @@ void Aeronave::setFechaCreacion(Fecha& fe) {
 	fechaCreacion = (Fecha*)&fe;
 }
 void Aeronave::setDistaciaRecorrida(double dis) { distaciaRecorrida = dis; }
+void Aeronave::setPlaca(string pla) { placa = pla; }
 
 Fecha* Aeronave::getFechaCreacion() { return fechaCreacion; }
 double Aeronave::getDistanciaRecorrida() { return distaciaRecorrida; }
-
+string Aeronave::getPlaca() { return placa; }
 string Aeronave::toString() {
 	stringstream s;
 	s << "== Aeronave ==" << endl;
@@ -27,24 +28,14 @@ string Aeronave::toString() {
 		s << "Fecha de creacion: " << fechaCreacion->toString() << endl;
 	}
 	s << "Distancia recorrida: " << distaciaRecorrida << endl;
+	s << "Numero de placa: " << placa << endl;
 	return s.str();
 }
 
 //Aviacion Civil
 
-AviacionCivil::AviacionCivil(Fecha& fe, double dis, string pla): Aeronave::Aeronave(fe, dis), Placa(pla) {}
+AviacionCivil::AviacionCivil(Fecha& fe, double dis, string pla): Aeronave::Aeronave(fe, dis, pla) {}
 AviacionCivil::~AviacionCivil() {}
-
-void AviacionCivil::setPlaca(string pla) { Placa = pla; }
-
-string AviacionCivil::getPlaca() { return Placa; }
-
-string AviacionCivil::toString() {
-	stringstream s;
-	s << Aeronave::toString() << endl << "--Aviacion Civil--" << endl << "Numero de placa: " << Placa << endl;
-	return s.str();
-}
-
 
 //Comercial
 
@@ -97,7 +88,7 @@ string Carga::toString() {
 	else {
 		s << "Escotilla" << endl;
 	}
-	s << "Altura de puerta: " << AlturaPuerta << "m" << endl << "Anchura puerta: " << AnchuraPuerta << "m" << endl
+	s << "Altura de puerta: " << AlturaPuerta << "cm" << endl << "Anchura puerta: " << AnchuraPuerta << "cm" << endl
 		<< "Categoria: " << Categoria << endl << endl << "Avion: " << ServicioCarga::Avion(Categoria) << endl << "Carga: " <<
 		ServicioCarga::Carga(Categoria) << "m^3" << endl << "Cantidad de pasajeros: " << ServicioCarga::Pasajeros(Categoria) << endl <<
 		"Alcance: " << ServicioCarga::Alcance(Categoria) << "Km" << endl;
@@ -106,7 +97,7 @@ string Carga::toString() {
 
 //Militar
 
-Militar::Militar(Fecha& fe, double dis, double vel, string cat) : Aeronave::Aeronave(fe, dis), VelocidadM(vel), Categoria(cat) {}
+Militar::Militar(Fecha& fe, double dis, string pla, double vel, string cat) : Aeronave::Aeronave(fe, dis, pla), VelocidadM(vel), Categoria(cat) {}
 Militar::~Militar() {}
 
 void Militar::setVelocidadM(double vel) { VelocidadM = vel; }
@@ -114,7 +105,6 @@ void Militar::setCategoria(string cat) { Categoria = cat; }
 
 double Militar::getVelocidadM() { return VelocidadM; }
 string Militar::getCategoria() { return Categoria; }
-string Militar::getPlaca() { return ""; }
 
 string Militar::toString() {
 	stringstream s;

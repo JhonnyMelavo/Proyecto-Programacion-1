@@ -52,20 +52,20 @@ void ContAvion::Agregar(Aeronave& avi) {
 		pex->setSigNodo(nn);
 	}
 }
-/*
+
 bool ContAvion::Eliminar(Aeronave& aviborra) {
 	NodoAvi* pex = ppio;
 	if (pex == NULL) {
 		return false;
 	}
-	if (pex->getObj()->getCedula() == con.getCedula()) {
+	if (pex->getObj()->getPlaca() == aviborra.getPlaca()) {
 		ppio = pex->getSigNodo();
 		delete pex->getObj();
 		delete pex;
 		return true;
 	}
 	while (pex->getSigNodo() != NULL) {
-		if (pex->getSigNodo()->getObj()->getCedula() == con.getCedula()) {
+		if (pex->getSigNodo()->getObj()->getPlaca() == aviborra.getPlaca()) {
 			NodoAvi* Aux = pex->getSigNodo()->getSigNodo();
 
 			delete pex->getSigNodo()->getObj();
@@ -79,21 +79,22 @@ bool ContAvion::Eliminar(Aeronave& aviborra) {
 	}
 	return false;
 }
-*/
+
 string ContAvion::toString() {
 	stringstream s;
 	NodoAvi* pex = ppio;
+	int i = 1;
 	if (pex == NULL) {
 		return "No hay Aeronaves";
 	}
 	while (pex != NULL) {
-		s << pex->getObj()->toString() << endl;
-		pex = pex->getSigNodo();
+		s << i << ") " << pex->getObj()->toString() << endl;
+		pex = pex->getSigNodo(); i++;
 	}
 	return s.str();
 }
 
-Aeronave* ContAvion::AeronaveCivilPlaca(string placa){
+Aeronave* ContAvion::AeronavePlaca(string placa){
 	NodoAvi* pex = ppio;
 	if (pex == NULL) {
 		return NULL;
@@ -105,6 +106,31 @@ Aeronave* ContAvion::AeronaveCivilPlaca(string placa){
 		pex = pex->getSigNodo();
 	}
 	return NULL;
+}
+
+Aeronave* ContAvion::naveN(int n) {
+	NodoAvi* pex = ppio; int i = 0;
+	if (pex == NULL) {
+		return NULL;
+	}
+	while (pex->getSigNodo() != NULL && i < n) {
+		pex = pex->getSigNodo();
+		i++;
+	}
+	return pex->getObj();
+}
+
+string ContAvion::Placas() {
+	stringstream s;
+	NodoAvi* pex = ppio;
+	if (pex == NULL) {
+		return "No hay Aeronaves";
+	}
+	while (pex != NULL) {
+		s << pex->getObj()->getPlaca() << endl;
+		pex = pex->getSigNodo();
+	}
+	return s.str();
 }
 
 int ContAvion::cantidad() {

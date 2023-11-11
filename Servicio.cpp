@@ -10,7 +10,7 @@ string ServicioComercial::Avion(int cat) {
 	case 777: return "Boeing 777"; break;
 	case 130: return "Concorde"; break;
 	case 850: return "DC-8-50"; break;
-	default: return "indf"; break;
+	default: return "idf"; break;
 	}
 }
 double ServicioComercial::Pasajeros(int cat) {

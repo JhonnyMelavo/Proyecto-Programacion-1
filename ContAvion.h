@@ -30,7 +30,9 @@ public:
 	bool Eliminar(Aeronave&);
 
 	string toString();
-	Aeronave* AeronaveCivilPlaca(string);
+	Aeronave* AeronavePlaca(string);
+	Aeronave* naveN(int);
+	string Placas();
 
 	int cantidad();
 };

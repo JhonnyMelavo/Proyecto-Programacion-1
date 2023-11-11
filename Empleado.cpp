@@ -50,6 +50,7 @@ Piloto::~Piloto() {}
 void Piloto::setAniosExp(int a) { aniosExp = a; }
 
 int Piloto::getAniosExp() { return aniosExp; }
+string Piloto::getTelefono() { return " "; }
 
 string Piloto::toString() {
 	stringstream s;
@@ -64,6 +65,7 @@ Copiloto::~Copiloto() {}
 
 void Copiloto::setTelefono(string tel) { telefono = tel; }
 
+int Copiloto::getAniosExp() { return -1; }
 string Copiloto::getTelefono() { return telefono; }
 
 string Copiloto::toString() {
@@ -80,6 +82,8 @@ Azafata::~Azafata() {}
 void Azafata::setNacionalidad(string nac) { nacionalidad = nac; }
 
 string Azafata::getNacionalidad() { return nacionalidad; }
+int Azafata::getAniosExp() { return -1; }
+string Azafata::getTelefono() { return " "; }
 
 string Azafata::toString() {
 	stringstream s;
@@ -97,6 +101,9 @@ EmpleadoAdmi::~EmpleadoAdmi() {}
 void EmpleadoAdmi::setTitulo(string tit) { titulo = tit; }
 
 string EmpleadoAdmi::getTitulo() { return titulo; }
+Aeronave* EmpleadoAdmi::getAeronave() { return NULL; }
+int EmpleadoAdmi::getAniosExp() { return -1; }
+string EmpleadoAdmi::getTelefono() { return " "; }
 
 string EmpleadoAdmi::toString() {
 	stringstream s;
@@ -114,6 +121,9 @@ void Miscelaneo::setAreaTrabajo(string are) { areaTrabajo = are; }
 
 string Miscelaneo::getGradoEscolaridad() { return gradoEscolaridad; }
 string Miscelaneo::getAreaTrabajo() { return areaTrabajo; }
+Aeronave* Miscelaneo::getAeronave() { return NULL; }
+int Miscelaneo::getAniosExp() { return -1; }
+string Miscelaneo::getTelefono() { return " "; }
 
 string Miscelaneo::toString() {
 	stringstream s;

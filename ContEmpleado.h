@@ -31,6 +31,15 @@ public:
 
 	string toString();
 	Empleado* EmpleadoCed(string);
+	string empleadosSinContrato();
+	bool hayPiloto(Aeronave*);
+	bool hayCopiloto(Aeronave*);
+	Empleado* EmpleadoN(int);
 
 	int cantidad();
+	int cantidadPilotos();
+	int cantidadCopilotos();
+	int cantidadSinContrato();
+
+	void setContrato(Contrato&, int);
 };

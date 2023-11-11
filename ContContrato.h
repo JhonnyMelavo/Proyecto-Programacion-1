@@ -31,6 +31,7 @@ public:
 
 	string toString();
 	Contrato* ContratoCod(string);
+	Contrato* ContratoN(int);
 
 	int cantidad();
 };

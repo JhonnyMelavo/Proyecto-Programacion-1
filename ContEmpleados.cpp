@@ -83,12 +83,13 @@ bool ContEmpleado::Eliminar(Empleado& con) {
 string ContEmpleado::toString() {
 	stringstream s;
 	NodoEmp* pex = ppio;
+	int i = 1;
 	if (pex == NULL) {
-		return "No hay Contratos";
+		return "No hay Empleados";
 	}
 	while (pex != NULL) {
-		s << pex->getObj()->toString() << endl;
-		pex = pex->getSigNodo();
+		s << i << ") " << pex->getObj()->toString() << endl;
+		pex = pex->getSigNodo(); i++;
 	}
 	return s.str();
 }
@@ -105,6 +106,64 @@ Empleado* ContEmpleado::EmpleadoCed(string ced) {
 	}
 	return NULL;
 }
+
+string ContEmpleado::empleadosSinContrato() {
+	stringstream s;
+	int i = 1;
+	NodoEmp* pex = ppio;
+	if (pex == NULL) {
+		return "No hay Empleados";
+	}
+	while (pex != NULL) {
+		if (pex->getObj()->getContrato() == NULL) {
+			s << "--Empleados Numero: " << i << " --" << endl;
+			s << pex->getObj()->toString() << endl;
+		}
+		pex = pex->getSigNodo(); i++;
+	}
+	return s.str();
+}
+
+bool ContEmpleado::hayPiloto(Aeronave* nave) {
+	NodoEmp* pex = ppio;
+	if (pex == NULL) {
+		return false;
+	}
+	while (pex->getSigNodo() != NULL) {
+		if (pex->getObj()->getAeronave() == nave) {
+			if (pex->getObj()->getAniosExp() != -1) { return true; }
+		}
+		pex = pex->getSigNodo();
+	}
+	return false;
+}
+
+bool ContEmpleado::hayCopiloto(Aeronave* nave) {
+	NodoEmp* pex = ppio;
+	if (pex == NULL) {
+		return false;
+	}
+	while (pex->getSigNodo() != NULL) {
+		if (pex->getObj()->getAeronave() == nave) {
+			if (pex->getObj()->getTelefono() != " ") { return true; }
+		}
+		pex = pex->getSigNodo();
+	}
+	return false;
+}
+
+Empleado* ContEmpleado::EmpleadoN(int n) {
+	NodoEmp* pex = ppio; int i = 1;
+	if (pex == NULL) {
+		return NULL;
+	}
+	while (pex->getSigNodo() != NULL && i < n) {
+		pex = pex->getSigNodo();
+		i++;
+	}
+	return pex->getObj();
+}
+
 int ContEmpleado::cantidad() {
 	NodoEmp* pex = ppio;
 	int i = 1;
@@ -116,4 +175,49 @@ int ContEmpleado::cantidad() {
 		i++;
 	}
 	return i;
+}
+
+int ContEmpleado::cantidadPilotos() {
+	NodoEmp* pex = ppio;
+	int i = 0;
+	if (pex == NULL) {
+		return 0;
+	}
+	while (pex != NULL) {
+		if (pex->getObj()->getAniosExp() != -1) { i++; }
+		pex = pex->getSigNodo();
+	}
+	return i;
+}
+
+int ContEmpleado::cantidadCopilotos() {
+	NodoEmp* pex = ppio;
+	int i = 0;
+	if (pex == NULL) {
+		return 0;
+	}
+	while (pex != NULL) {
+		if (pex->getObj()->getTelefono() != " ") { i++; }
+		pex = pex->getSigNodo();
+	}
+	return i;
+}
+
+int ContEmpleado::cantidadSinContrato() {
+	int i = 0;
+	NodoEmp* pex = ppio;
+	if (pex == NULL) {
+		return 0;
+	}
+	while (pex != NULL) {
+		if (pex->getObj()->getContrato() == NULL) {
+			i++;
+		}
+		pex = pex->getSigNodo();
+	}
+	return i;
+}
+
+void ContEmpleado::setContrato(Contrato& con, int n) {
+	EmpleadoN(n)->setContrato(con);
 }

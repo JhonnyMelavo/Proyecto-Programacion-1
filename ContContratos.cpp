@@ -83,12 +83,13 @@ bool ContContrato::Eliminar(Contrato& con) {
 string ContContrato::toString() {
 	stringstream s;
 	NodoCon* pex = ppio;
+	int i = 1;
 	if (pex == NULL) {
 		return "No hay Contratos";
 	}
 	while (pex != NULL) {
-		s << pex->getObj()->toString() << endl;
-		pex = pex->getSigNodo();
+		s << i << ") " << pex->getObj()->toString() << endl;
+		pex = pex->getSigNodo(); i++;
 	}
 	return s.str();
 }
@@ -105,6 +106,18 @@ Contrato* ContContrato::ContratoCod(string cod) {
 	}
 	return NULL;
 }
+Contrato* ContContrato::ContratoN(int n) {
+	NodoCon* pex = ppio; int i = 0;
+	if (pex == NULL) {
+		return NULL;
+	}
+	while (pex->getSigNodo() != NULL && i < n) {
+		pex = pex->getSigNodo();
+		i++;
+	}
+	return pex->getObj();
+}
+
 int ContContrato::cantidad() {
 	NodoCon* pex = ppio;
 	int i = 1;

@@ -6,32 +6,26 @@ class Aeronave {
 protected:
 	Fecha* fechaCreacion;
 	double distaciaRecorrida;
+	string placa;
 public:
-	Aeronave(Fecha&, double);
+	Aeronave(Fecha&, double, string);
 	virtual ~Aeronave();
 
 	void setFechaCreacion(Fecha&);
 	void setDistaciaRecorrida(double);
+	void setPlaca(string);
 
 	Fecha* getFechaCreacion();
 	double getDistanciaRecorrida();
-	virtual string getPlaca() = 0;
+	virtual string getPlaca();
 
 	virtual string toString();
 };
 
 class AviacionCivil : public Aeronave {
-protected:
-	string Placa;
 public:
 	AviacionCivil(Fecha&, double, string);
 	virtual ~AviacionCivil();
-
-	void setPlaca(string);
-
-	string getPlaca();
-
-	virtual string toString();
 };
 
 class Comerciales : public AviacionCivil {
@@ -79,7 +73,7 @@ private:
 	double VelocidadM;
 	string Categoria;
 public:
-	Militar(Fecha&, double, double, string);
+	Militar(Fecha&, double, string, double, string);
 	virtual ~Militar();
 
 	void setVelocidadM(double);
@@ -87,7 +81,6 @@ public:
 
 	double getVelocidadM();
 	string getCategoria();
-	string getPlaca();
 
 	string toString();
 };
