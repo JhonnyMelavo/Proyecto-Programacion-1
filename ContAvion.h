@@ -1,5 +1,6 @@
 #pragma once
 #include"Aeronave.h"
+#include"ContEmpleado.h"
 
 class NodoAvi {
 private:
@@ -33,6 +34,11 @@ public:
 	Aeronave* AeronavePlaca(string);
 	Aeronave* naveN(int);
 	string Placas();
+	bool EsMilitar(Aeronave*);
+	string AeronavesMas20(Fecha&);
+	string TripulacionComerciales(ContEmpleado&);
+	Aeronave* PuertaMasGrande();
 
 	int cantidad();
+	int cantidadMilitares();
 };

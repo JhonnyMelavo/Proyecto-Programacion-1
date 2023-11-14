@@ -98,7 +98,7 @@ Contrato* ContContrato::ContratoCod(string cod) {
 	if (pex == NULL) {
 		return NULL;
 	}
-	while (pex->getSigNodo() != NULL) {
+	while (pex != NULL) {
 		if (pex->getObj()->getCodigo() == cod) {
 			return pex->getObj();
 		}
@@ -116,6 +116,49 @@ Contrato* ContContrato::ContratoN(int n) {
 		i++;
 	}
 	return pex->getObj();
+}
+
+string ContContrato::ContratosSerivicios() {
+	stringstream s;
+	NodoCon* pex = ppio;
+	if (pex == NULL) {
+		return "No hay Contratos";
+	}
+	while (pex != NULL) {
+		if (pex->getObj()->esServicio()) {
+			s << pex->getObj()->toString();
+		}
+		pex = pex->getSigNodo();
+	}
+	return s.str();
+}
+string ContContrato::ContratosPlazo() {
+	stringstream s;
+	NodoCon* pex = ppio;
+	if (pex == NULL) {
+		return "No hay Contratos";
+	}
+	while (pex != NULL) {
+		if (pex->getObj()->esPlazo()) {
+			s << pex->getObj()->toString();
+		}
+		pex = pex->getSigNodo();
+	}
+	return s.str();
+}
+string ContContrato::ContratosIndefinido() {
+	stringstream s;
+	NodoCon* pex = ppio;
+	if (pex == NULL) {
+		return "No hay Contratos";
+	}
+	while (pex != NULL) {
+		if (pex->getObj()->esIndefinido()) {
+			s << pex->getObj()->toString();
+		}
+		pex = pex->getSigNodo();
+	}
+	return s.str();
 }
 
 int ContContrato::cantidad() {

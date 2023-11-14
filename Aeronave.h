@@ -18,6 +18,10 @@ public:
 	Fecha* getFechaCreacion();
 	double getDistanciaRecorrida();
 	virtual string getPlaca();
+	virtual string getcategoria() = 0;
+	virtual bool esMilitar() = 0;
+	virtual bool esCarga() = 0;
+	virtual double tamPuerta() = 0;
 
 	virtual string toString();
 };
@@ -26,6 +30,10 @@ class AviacionCivil : public Aeronave {
 public:
 	AviacionCivil(Fecha&, double, string);
 	virtual ~AviacionCivil();
+	virtual string getcategoria() = 0;
+	virtual bool esMilitar() = 0;
+	virtual bool esCarga() = 0;
+	virtual double tamPuerta() = 0;
 };
 
 class Comerciales : public AviacionCivil {
@@ -41,6 +49,10 @@ public:
 
 	int getCategoria();
 	bool getTipo();
+	string getcategoria();
+	bool esMilitar();
+	bool esCarga();
+	virtual double tamPuerta();
 
 	string toString();
 };
@@ -62,8 +74,11 @@ public:
 
 	double getAltura();
 	double getAnchura();
-	string getCategoria();
-	bool getTipo();
+	string getcategoria();
+	bool getTipo();	
+	bool esMilitar();
+	bool esCarga();
+	double tamPuerta();
 
 	string toString();
 };
@@ -80,7 +95,10 @@ public:
 	void setCategoria(string);
 
 	double getVelocidadM();
-	string getCategoria();
+	string getcategoria();
+	bool esMilitar();
+	bool esCarga();
+	double tamPuerta();
 
 	string toString();
 };

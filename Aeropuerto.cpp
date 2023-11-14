@@ -37,8 +37,17 @@ int Aeropuerto::getCantidadAeronaves() {
 int Aeropuerto::getCantidadPilotos() {
 	return Empleados->cantidadPilotos();
 }
+int Aeropuerto::getCantidadCopilotos() {
+	return Empleados->cantidadCopilotos();
+}
+int Aeropuerto::getCantidadAzafatas() {
+	return Empleados->cantidadAzafatas();
+}
 int Aeropuerto::getCantidadEmpleadosSinContrato() {
 	return Empleados->cantidadSinContrato();
+}
+int Aeropuerto::getCantidadMilitares() {
+	return Aeronaves->cantidadMilitares();
 }
 
 Contrato* Aeropuerto::contratoCod(string cod) {
@@ -65,11 +74,44 @@ bool Aeropuerto::hayPiloto(Aeronave* aero) {
 bool Aeropuerto::hayCopiloto(Aeronave* aero) {
 	return Empleados->hayCopiloto(aero);
 }
+bool Aeropuerto::hayAzafata(Aeronave* aero) {
+	return Empleados->hayAzafata(aero);
+}
+bool Aeropuerto::EsMilitar(Aeronave* aero) {
+	return Aeronaves->EsMilitar(aero);
+}
 string Aeropuerto::getPlacas() {
 	return Aeronaves->Placas();
 }
 string Aeropuerto::empleadosSinContrato() {
 	return Empleados->empleadosSinContrato();
+}
+bool Aeropuerto::PasarEmpleados(Aeronave& nav1, Aeronave& nav2) {
+	return Empleados->pasarEmpleados(nav1, nav2);
+}
+string Aeropuerto::toStringAeronavesConTripulacion(Aeronave& nave) {
+	return Empleados->toStringEmpleadosEnAeronave(nave);
+}
+string Aeropuerto::pilotosCarga() {
+	return Empleados->pilotosCarga();
+}
+string Aeropuerto::AeronavesMas20(Fecha& act) {
+	return Aeronaves->AeronavesMas20(act);
+}
+string Aeropuerto::ContratosServicios() {
+	return Contratos->ContratosSerivicios();
+}
+string Aeropuerto::ContratosPlazo() {
+	return Contratos->ContratosPlazo();
+}
+string Aeropuerto::ContratosIndefinidos() {
+	return Contratos->ContratosIndefinido();
+}
+string Aeropuerto::TripulacionComerciales() {
+	return Aeronaves->TripulacionComerciales(*Empleados);
+}
+Aeronave* Aeropuerto::PuertaMasGrande() {
+	return Aeronaves->PuertaMasGrande();
 }
 
 string Aeropuerto::toStringContratos() {
@@ -90,6 +132,16 @@ void Aeropuerto::agregarEmpleado(Empleado& emp) {
 }
 void Aeropuerto::agregarAeronave(Aeronave& nave) {
 	Aeronaves->Agregar(nave);
+}
+
+bool Aeropuerto::eliminarContrato(Contrato& con) {
+	return Contratos->Eliminar(con);
+}
+bool Aeropuerto::eliminarEmpleado(Empleado& emp) {
+	return Empleados->Eliminar(emp);
+}
+bool Aeropuerto::eliminarAeronaves(Aeronave& nave) {
+	return Aeronaves->Eliminar(nave);
 }
 
 void Aeropuerto::setContrato(Contrato& con, int n) {

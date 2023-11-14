@@ -27,7 +27,10 @@ public:
 	int getCantidadEmpleados();
 	int getCantidadAeronaves();
 	int getCantidadPilotos();
+	int getCantidadCopilotos();
+	int getCantidadAzafatas();
 	int getCantidadEmpleadosSinContrato();
+	int getCantidadMilitares();
 
 	Contrato* contratoCod(string);
 	Aeronave* aeronavePla(string);
@@ -37,8 +40,20 @@ public:
 	Contrato* contratoN(int);
 	bool hayPiloto(Aeronave*);
 	bool hayCopiloto(Aeronave*);
+	bool hayAzafata(Aeronave*);
+	bool EsMilitar(Aeronave*);
 	string getPlacas();
 	string empleadosSinContrato();
+	bool PasarEmpleados(Aeronave&, Aeronave&);
+	string toStringAeronavesConTripulacion(Aeronave&);
+	string pilotosCarga();
+	string AeronavesMas20(Fecha&);
+	string ContratosServicios();
+	string ContratosPlazo();
+	string ContratosIndefinidos();
+	string TripulacionComerciales();
+	Aeronave* PuertaMasGrande();
+
 
 	string toStringContratos();
 	string toStringEmpleados();
@@ -47,6 +62,10 @@ public:
 	void agregarContrato(Contrato&);
 	void agregarEmpleado(Empleado&);
 	void agregarAeronave(Aeronave&);
+
+	bool eliminarContrato(Contrato&);
+	bool eliminarEmpleado(Empleado&);
+	bool eliminarAeronaves(Aeronave&);
 
 	void setContrato(Contrato&, int);
 

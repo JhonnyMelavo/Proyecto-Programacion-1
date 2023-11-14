@@ -47,6 +47,22 @@ void Comerciales::setTipo(bool tip) { Tipo = tip; }
 
 int Comerciales::getCategoria() { return Categoria; }
 bool Comerciales::getTipo() { return Tipo; }
+string Comerciales::getcategoria() { 
+	stringstream s;
+	s << Categoria;
+	return s.str();
+}
+bool Comerciales::esMilitar() {
+	if (ServicioMilitar::Avion(getcategoria()) != "idf") { return true; }
+	else { return false; }
+}
+bool Comerciales::esCarga() {
+	if (ServicioCarga::Avion(getcategoria()) != "idf") { return true; }
+	else { return false; }
+}
+double Comerciales::tamPuerta() {
+	return 0;
+}
 
 string Comerciales::toString() {
 	stringstream s;
@@ -76,8 +92,19 @@ void Carga::setTipo(bool tip) { Tipo = tip; }
 
 double Carga::getAltura() { return AlturaPuerta; }
 double Carga::getAnchura() { return AnchuraPuerta; }
-string Carga::getCategoria() { return Categoria; }
+string Carga::getcategoria() { return Categoria; }
 bool Carga::getTipo() { return Tipo; }
+bool Carga::esMilitar() {
+	if (ServicioMilitar::Avion(getcategoria()) != "idf") { return true; }
+	else { return false; }
+}
+bool Carga::esCarga() {
+	if (ServicioCarga::Avion(getcategoria()) != "idf") { return true; }
+	else { return false; }
+}
+double Carga::tamPuerta() {
+	return AlturaPuerta * AnchuraPuerta;
+}
 
 string Carga::toString() {
 	stringstream s;
@@ -104,7 +131,18 @@ void Militar::setVelocidadM(double vel) { VelocidadM = vel; }
 void Militar::setCategoria(string cat) { Categoria = cat; }
 
 double Militar::getVelocidadM() { return VelocidadM; }
-string Militar::getCategoria() { return Categoria; }
+string Militar::getcategoria() { return Categoria; }
+bool Militar::esMilitar() {
+	if (ServicioMilitar::Avion(getcategoria()) != "idf") { return true; }
+	else { return false; }
+}
+bool Militar::esCarga() {
+	if (ServicioCarga::Avion(getcategoria()) != "idf") { return true; }
+	else { return false; }
+}
+double Militar::tamPuerta() {
+	return 0;
+}
 
 string Militar::toString() {
 	stringstream s;

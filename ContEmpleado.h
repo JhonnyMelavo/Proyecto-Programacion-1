@@ -34,11 +34,16 @@ public:
 	string empleadosSinContrato();
 	bool hayPiloto(Aeronave*);
 	bool hayCopiloto(Aeronave*);
+	bool hayAzafata(Aeronave*);
 	Empleado* EmpleadoN(int);
+	bool pasarEmpleados(Aeronave&, Aeronave&);
+	string toStringEmpleadosEnAeronave(Aeronave&);
+	string pilotosCarga();
 
 	int cantidad();
 	int cantidadPilotos();
 	int cantidadCopilotos();
+	int cantidadAzafatas();
 	int cantidadSinContrato();
 
 	void setContrato(Contrato&, int);

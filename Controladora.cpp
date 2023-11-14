@@ -32,19 +32,19 @@ void Control::Control1() {
 }
 
 void Control::Control2() {
-
+	Interfaz::Mantenimiento(*aeropuerto);
 }
 
 void Control::Control3() {
-
+	Interfaz::Reportes(*aeropuerto);
 }
 
 void Control::Control4() {
-
+	Interfaz::Consultar(*aeropuerto);
 }
 
 void Control::Control5() {
-	
+	Interfaz::Despedida();
 }
 
 void Control::ControlErrorDat() {

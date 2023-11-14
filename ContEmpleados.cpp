@@ -98,7 +98,7 @@ Empleado* ContEmpleado::EmpleadoCed(string ced) {
 	if (pex == NULL) {
 		return NULL;
 	}
-	while (pex->getSigNodo() != NULL) {
+	while (pex != NULL) {
 		if (pex->getObj()->getCedula() == ced) {
 			return pex->getObj();
 		}
@@ -129,7 +129,7 @@ bool ContEmpleado::hayPiloto(Aeronave* nave) {
 	if (pex == NULL) {
 		return false;
 	}
-	while (pex->getSigNodo() != NULL) {
+	while (pex != NULL) {
 		if (pex->getObj()->getAeronave() == nave) {
 			if (pex->getObj()->getAniosExp() != -1) { return true; }
 		}
@@ -143,9 +143,22 @@ bool ContEmpleado::hayCopiloto(Aeronave* nave) {
 	if (pex == NULL) {
 		return false;
 	}
-	while (pex->getSigNodo() != NULL) {
+	while (pex != NULL) {
 		if (pex->getObj()->getAeronave() == nave) {
 			if (pex->getObj()->getTelefono() != " ") { return true; }
+		}
+		pex = pex->getSigNodo();
+	}
+	return false;
+}
+bool ContEmpleado::hayAzafata(Aeronave* nave) {
+	NodoEmp* pex = ppio;
+	if (pex == NULL) {
+		return false;
+	}
+	while (pex != NULL) {
+		if (pex->getObj()->getAeronave() == nave) {
+			if (pex->getObj()->getNacionalidad() != " ") { return true; }
 		}
 		pex = pex->getSigNodo();
 	}
@@ -162,6 +175,91 @@ Empleado* ContEmpleado::EmpleadoN(int n) {
 		i++;
 	}
 	return pex->getObj();
+}
+
+bool ContEmpleado::pasarEmpleados(Aeronave& nav1, Aeronave& nav2) {
+	NodoEmp* pex = ppio;
+	bool pil = hayPiloto((Aeronave*)&nav2);
+	bool cop = hayCopiloto((Aeronave*)&nav2);
+	bool aza = hayAzafata((Aeronave*)&nav2);
+	bool piloto = false, copiloto = false, azafata = false;
+	if (pex == NULL) {
+		return false;
+	}
+	while (pex != NULL) {
+		if (pex->getObj()->getAeronave() != NULL) {
+			if (pex->getObj()->getAeronave()->getPlaca() == nav1.getPlaca()) {
+				if (pex->getObj()->getAniosExp() != -1 && !pil) {
+					piloto = true;
+				}
+				else if (pex->getObj()->getTelefono() != " " && !cop) {
+					copiloto = true;
+				}
+				else if (pex->getObj()->getNacionalidad() != " " && !aza && !nav2.esMilitar()) {
+					azafata = true;
+				}
+			}
+		}
+		pex = pex->getSigNodo();
+	}
+	if (piloto && copiloto && azafata) {
+		pex = ppio;
+		if (pex == NULL) {
+			return false;
+		}
+		while (pex != NULL) {
+			if (pex->getObj()->getAeronave() != NULL) {
+				if (pex->getObj()->getAeronave()->getPlaca() == nav1.getPlaca()) {
+					if (pex->getObj()->getAniosExp() != -1 && piloto) {
+						pex->getObj()->setAeronave(nav2);
+					}
+					else if (pex->getObj()->getTelefono() != " " && copiloto) {
+						pex->getObj()->setAeronave(nav2);
+					}
+					else if (pex->getObj()->getNacionalidad() != " " && azafata) {
+						pex->getObj()->setAeronave(nav2);
+					}
+				}
+			}
+			pex = pex->getSigNodo();
+		}
+		return true;
+	}
+	return false;
+}
+
+string ContEmpleado::toStringEmpleadosEnAeronave(Aeronave& nave) {
+	NodoEmp* pex = ppio;
+	stringstream s;
+	if (pex == NULL) {
+		return "No hay Empleados";
+	}
+	while (pex != NULL) {
+		if (pex->getObj()->getAeronave() != NULL) {
+			if (pex->getObj()->getAeronave()->getPlaca() == nave.getPlaca()) {
+				s << pex->getObj()->toString();
+			}
+		}
+		pex = pex->getSigNodo();
+	}
+	return s.str();;
+}
+
+string ContEmpleado::pilotosCarga() {
+	NodoEmp* pex = ppio;
+	stringstream s;
+	if (pex == NULL) {
+		return "No hay Empleados";
+	}
+	while (pex != NULL) {
+		if (pex->getObj()->getAeronave() != NULL) {
+			if (pex->getObj()->getAeronave()->esCarga() && pex->getObj()->getAniosExp() != -1) {
+				s << pex->getObj()->toString();
+			}
+		}
+		pex = pex->getSigNodo();
+	}
+	return s.str();
 }
 
 int ContEmpleado::cantidad() {
@@ -198,6 +296,19 @@ int ContEmpleado::cantidadCopilotos() {
 	}
 	while (pex != NULL) {
 		if (pex->getObj()->getTelefono() != " ") { i++; }
+		pex = pex->getSigNodo();
+	}
+	return i;
+}
+
+int ContEmpleado::cantidadAzafatas() {
+	NodoEmp* pex = ppio;
+	int i = 0;
+	if (pex == NULL) {
+		return 0;
+	}
+	while (pex != NULL) {
+		if (pex->getObj()->getNacionalidad() != " ") { i++; }
 		pex = pex->getSigNodo();
 	}
 	return i;

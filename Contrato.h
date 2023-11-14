@@ -34,6 +34,10 @@ public:
 	virtual string getTipoServicio();
 	virtual Fecha* getFechaInicio() = 0;
 	virtual Fecha* getFechaCese() = 0;
+
+	virtual bool esServicio() = 0;
+	virtual bool esPlazo() = 0;
+	virtual bool esIndefinido() = 0;
 };
 
 
@@ -60,6 +64,10 @@ public:
 	Fecha* getFechaInicio();
 	Fecha* getFechaCese();
 
+	bool esServicio();
+	bool esPlazo();
+	bool esIndefinido();
+
 	string toString();
 };
 
@@ -77,6 +85,10 @@ public:
 
 	Fecha* getFechaInicio();
 	Fecha* getFechaCese();
+
+	bool esServicio();
+	bool esPlazo();
+	bool esIndefinido();
 
 	string toString();
 };
@@ -98,6 +110,10 @@ public:
 	Plaza* getPlaza();
 	Fecha* getFechaInicio();
 	Fecha* getFechaCese();
+
+	bool esServicio();
+	bool esPlazo();
+	bool esIndefinido();
 
 	string toString();
 };

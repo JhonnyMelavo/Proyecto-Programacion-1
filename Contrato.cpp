@@ -65,6 +65,10 @@ string ContratoServicios::getTipoServicio() { return tipoServicio; }
 Fecha* ContratoServicios::getFechaInicio() { return fechaInicio; }
 Fecha* ContratoServicios::getFechaCese() { return fechaCese; }
 
+bool ContratoServicios::esServicio() { return true; }
+bool ContratoServicios::esPlazo() { return false; }
+bool ContratoServicios::esIndefinido() { return false; }
+
 string ContratoServicios::toString() {
 	stringstream s;
 	s << Contrato::toString() << endl << "Tipo de servicio: " << tipoServicio << endl
@@ -94,6 +98,10 @@ void ContratoPlazo::setFechaCese(Fecha& feC) { fechaCese = (Fecha*)&feC; }
 
 Fecha* ContratoPlazo::getFechaInicio() { return fechaInicio; }
 Fecha* ContratoPlazo::getFechaCese() { return fechaCese; }
+
+bool ContratoPlazo::esServicio() { return false; }
+bool ContratoPlazo::esPlazo() { return true; }
+bool ContratoPlazo::esIndefinido() { return false; }
 
 string ContratoPlazo::toString() {
 	stringstream s;
@@ -127,6 +135,10 @@ void ContratoIndefinido::setFechaCese(Fecha& feC) { fechaCese = (Fecha*)&feC; }
 Plaza* ContratoIndefinido::getPlaza() { return plaza; }
 Fecha* ContratoIndefinido::getFechaInicio() { return fechaInicio; }
 Fecha* ContratoIndefinido::getFechaCese() {	return fechaCese; }
+
+bool ContratoIndefinido::esServicio() { return false; }
+bool ContratoIndefinido::esPlazo() { return false; }
+bool ContratoIndefinido::esIndefinido() { return true; }
 
 string ContratoIndefinido::toString() {
 	stringstream s;

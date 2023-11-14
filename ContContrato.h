@@ -33,5 +33,9 @@ public:
 	Contrato* ContratoCod(string);
 	Contrato* ContratoN(int);
 
+	string ContratosSerivicios();
+	string ContratosPlazo();
+	string ContratosIndefinido();
+
 	int cantidad();
 };

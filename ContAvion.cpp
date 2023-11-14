@@ -132,6 +132,59 @@ string ContAvion::Placas() {
 	}
 	return s.str();
 }
+bool ContAvion::EsMilitar(Aeronave* aero) {
+	return aero->esMilitar();
+}
+
+string ContAvion::AeronavesMas20(Fecha& actual) {
+	stringstream s;
+	NodoAvi* pex = ppio;
+	if (pex == NULL) {
+		return "No hay Aeronaves";
+	}
+	while (pex != NULL) {
+		if (pex->getObj()->getFechaCreacion()->mas20Anios(actual)) {
+			s << pex->getObj()->toString() << endl;
+		}
+		pex = pex->getSigNodo();
+	}
+	return s.str();
+}
+
+string ContAvion::TripulacionComerciales(ContEmpleado& empleados) {
+	stringstream s;
+	NodoAvi* pex = ppio;
+	int i = 1;
+	if (pex == NULL) {
+		return "No hay Aeronaves";
+	}
+	while (pex != NULL) {
+		if (!pex->getObj()->esCarga() && !pex->getObj()->esMilitar()) {
+			s << "-- Aeronave " << i << " --" << endl; i++;
+			s << empleados.toStringEmpleadosEnAeronave(*pex->getObj());
+		}
+		pex = pex->getSigNodo();
+	}
+	return s.str();
+}
+
+Aeronave* ContAvion::PuertaMasGrande() {
+	NodoAvi* pex = ppio;
+	int i = 1;
+	Aeronave* aux = NULL;
+	double tam = 0;
+	if (pex == NULL) {
+		return NULL;
+	}
+	while (pex != NULL) {
+		if (pex->getObj()->tamPuerta() > tam) {
+			tam = pex->getObj()->tamPuerta();
+			aux = pex->getObj();
+		}
+		pex = pex->getSigNodo();
+	}
+	return aux;
+}
 
 int ContAvion::cantidad() {
 	NodoAvi* pex = ppio;
@@ -142,6 +195,20 @@ int ContAvion::cantidad() {
 	while (pex->getSigNodo() != NULL) {
 		pex = pex->getSigNodo();
 		i++;
+	}
+	return i;
+}
+int ContAvion::cantidadMilitares() {
+	NodoAvi* pex = ppio;
+	int i = 0;
+	if (pex == NULL) {
+		return 0;
+	}
+	while (pex != NULL) {
+		if (EsMilitar(pex->getObj())) {
+			i++;
+		}
+		pex = pex->getSigNodo();
 	}
 	return i;
 }

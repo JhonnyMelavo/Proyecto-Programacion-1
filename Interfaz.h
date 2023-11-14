@@ -16,6 +16,7 @@ public:
 	static void ErrorDato();
 	static void ErrorInsuficientesEmpleados();
 	static void ErrorInsuficientesAeronaves();
+	static void ErrorInsuficientesContratos();
 	static void ErrorCodigoExistente();
 	static void ErrorPlacaExistente();
 	static void ErrorCategoriaNoExistente();
@@ -24,12 +25,21 @@ public:
 	static void ErrorCopilotoExistente();
 	static void ErrorInsuficientesEmpleadosSinContrato();
 	static void ErrorContratoYaExistente();
+	static void ErrorAzafataExistente();
+	static void ErrorAzafataEnMilitar();
+	static void NoSePudoEliminar();
+	static void MismaAeronaves();
 
 	//Confirmaciones
 	static void AgregadoExitoso();
+	static void EliminadoExitoso();
 
+	//Despedida
+	static void Despedida();
+
+	//Ingresar
 	static void Ingresar(Aeropuerto&);
-
+	
 	static void IngresarContrato(Aeropuerto&);
 	static void IngresarServicio(Aeropuerto&);
 	static void IngresarPlazo(Aeropuerto&);
@@ -50,5 +60,35 @@ public:
 	static void IngresarCarga(Aeropuerto&);
 	static void IngresarMilitar(Aeropuerto&);
 
+	//Mantenimiento
 
+	static void Mantenimiento(Aeropuerto&);
+
+	static void EliminarContrato(Aeropuerto&);
+	static void EliminarEmpleado(Aeropuerto&);
+	static void EliminarAeronave(Aeropuerto&);
+
+	//Reportes
+
+	static void Reportes(Aeropuerto&);
+
+	static void ReporteContratoYEmpleado(Aeropuerto&);
+	static void ReporteAeronavesConTripulacion(Aeropuerto&);
+	static void ReportePilotosDeCarga(Aeropuerto&);
+	static void ReporteAeronaves(Aeropuerto&);
+	static void ReporteAeronavesMas20(Aeropuerto&);
+	static void ReporteContratosSerivicios(Aeropuerto&);
+	static void ReporteContratosPlazo(Aeropuerto&);
+	static void ReporteContratosIndefinidos(Aeropuerto&);
+	static void ReporteTripulantesComerciales(Aeropuerto&);
+	static void ReporteContratosPlazoFijoMas2(Aeropuerto&);
+	static void ReportePuertaMasGrande(Aeropuerto&);
+
+	//Consultar
+
+	static void Consultar(Aeropuerto&);
+
+	static void ConsultarEmpleadoCed(Aeropuerto&);
+	static void ConsultarContratoCod(Aeropuerto&);
+	static void ConsultarAeronavePlaca(Aeropuerto&);
 };

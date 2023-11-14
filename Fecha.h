@@ -17,8 +17,11 @@ public:
 	void setAnio(int);
 
 	int getDia();
-	int geiMes();
+	int getMes();
 	int getAnio();
+
+	bool mas20Anios(Fecha&);
+	bool mas2Anios(Fecha&);
 
 	string toString();
 };
