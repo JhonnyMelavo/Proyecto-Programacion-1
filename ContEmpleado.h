@@ -39,6 +39,8 @@ public:
 	bool pasarEmpleados(Aeronave&, Aeronave&);
 	string toStringEmpleadosEnAeronave(Aeronave&);
 	string pilotosCarga();
+	Empleado* EmpleadoConContrato(Contrato&);
+	int cantidadEmpleadosPlazoMas2(Fecha&);
 
 	int cantidad();
 	int cantidadPilotos();

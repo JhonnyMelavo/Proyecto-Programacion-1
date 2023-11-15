@@ -160,6 +160,41 @@ string ContContrato::ContratosIndefinido() {
 	}
 	return s.str();
 }
+string ContContrato::ContratosMas2(Fecha& act) {
+	stringstream s;
+	NodoCon* pex = ppio;
+	int i = 1;
+	if (pex == NULL) {
+		return "No hay Contratos";
+	}
+	while (pex != NULL) {
+		if (pex->getObj()->esPlazo()) {
+			if (pex->getObj()->getFechaInicio()->mas2Anios(act)) {
+				s << i << ") " << pex->getObj()->toString() << endl;
+			}
+		}
+		pex = pex->getSigNodo(); i++;
+	}
+	return s.str();
+}
+int ContContrato::cantidadContratosMas2(Fecha& act) {
+	stringstream s;
+	NodoCon* pex = ppio;
+	int i = 0;
+	if (pex == NULL) {
+		return 0;
+	}
+	while (pex != NULL) {
+		if (pex->getObj()->esPlazo()) {
+			if (pex->getObj()->getFechaInicio()->mas2Anios(act)) {
+				i++;
+			}
+			pex = pex->getSigNodo();
+		}
+	}
+	return i;
+}
+
 
 int ContContrato::cantidad() {
 	NodoCon* pex = ppio;

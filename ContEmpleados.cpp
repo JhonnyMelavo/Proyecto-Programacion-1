@@ -262,6 +262,41 @@ string ContEmpleado::pilotosCarga() {
 	return s.str();
 }
 
+Empleado* ContEmpleado::EmpleadoConContrato(Contrato& con) {
+	NodoEmp* pex = ppio;
+	stringstream s;
+	if (pex == NULL) {
+		return NULL;
+	}
+	while (pex != NULL) {
+		if (pex->getObj()->getContrato() != NULL) {
+			if (pex->getObj()->getContrato()->getCodigo() == con.getCodigo()) {
+				return pex->getObj();
+			}
+		}
+		pex = pex->getSigNodo();
+	}
+	return NULL;
+}
+
+int ContEmpleado::cantidadEmpleadosPlazoMas2(Fecha& fe) {
+	NodoEmp* pex = ppio;
+	stringstream s;
+	int i = 0;
+	if (pex == NULL) {
+		return NULL;
+	}
+	while (pex != NULL) {
+		if (pex->getObj()->getContrato() != NULL) {
+			if (pex->getObj()->getContrato()->esPlazo() && pex->getObj()->getContrato()->getFechaInicio()->mas2Anios(fe)) {
+				i++;
+			}
+		}
+		pex = pex->getSigNodo();
+	}
+	return i;
+}
+
 int ContEmpleado::cantidad() {
 	NodoEmp* pex = ppio;
 	int i = 1;

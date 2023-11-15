@@ -36,6 +36,8 @@ public:
 	string ContratosSerivicios();
 	string ContratosPlazo();
 	string ContratosIndefinido();
+	string ContratosMas2(Fecha&);
+	int cantidadContratosMas2(Fecha&);
 
 	int cantidad();
 };

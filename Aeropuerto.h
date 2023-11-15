@@ -53,7 +53,9 @@ public:
 	string ContratosIndefinidos();
 	string TripulacionComerciales();
 	Aeronave* PuertaMasGrande();
-
+	string ContratosPlazoMas2(Fecha&);
+	int cantidadContratosPlazoMas2(Fecha&);
+	Empleado* EmpleadoConContrato(Contrato&);
 
 	string toStringContratos();
 	string toStringEmpleados();

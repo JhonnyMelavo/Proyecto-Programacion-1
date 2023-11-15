@@ -17,6 +17,7 @@ public:
 	void setNombre(string);
 	void setEdad(int);
 	void setContrato(Contrato&);
+	void setContratoSinBorrar(Contrato&);
 
 	string getCedula();
 	string getNombre();

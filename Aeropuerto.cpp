@@ -113,6 +113,15 @@ string Aeropuerto::TripulacionComerciales() {
 Aeronave* Aeropuerto::PuertaMasGrande() {
 	return Aeronaves->PuertaMasGrande();
 }
+string Aeropuerto::ContratosPlazoMas2(Fecha& fe) {
+	return Contratos->ContratosMas2(fe);
+}
+int Aeropuerto::cantidadContratosPlazoMas2(Fecha& fe) {
+	return Contratos->cantidadContratosMas2(fe);
+}
+Empleado* Aeropuerto::EmpleadoConContrato(Contrato& con) {
+	return Empleados->EmpleadoConContrato(con);
+}
 
 string Aeropuerto::toStringContratos() {
 	return Contratos->toString();

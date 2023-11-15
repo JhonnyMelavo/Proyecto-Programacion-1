@@ -14,6 +14,9 @@ void Empleado::setContrato(Contrato& con) {
 	}
 	contrato = (Contrato*)&con;
 }
+void Empleado::setContratoSinBorrar(Contrato& con) {
+	contrato = (Contrato*)&con;
+}
 
 string Empleado::getCedula() { return cedula; }
 string Empleado::getNombre() { return nombre; }

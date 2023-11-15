@@ -73,7 +73,7 @@ void Interfaz::ErrorInsuficientesEmpleados() {
 	cout << "<<No hay empleados suficientes>>" << endl;
 }
 void Interfaz::ErrorInsuficientesAeronaves() {
-	cout << "<<No hay aeronaves sufivientes>>" << endl;
+	cout << "<<No hay aeronaves suficientes>>" << endl;
 }
 void Interfaz::ErrorInsuficientesContratos() {
 	cout << "<<No hay contratos suficientes>>" << endl;
@@ -1010,6 +1010,8 @@ void Interfaz::ReporteTripulantesComerciales(Aeropuerto& aero) {
 void Interfaz::ReporteContratosPlazoFijoMas2(Aeropuerto& aero) {
 	int d = -1, me = -1, a = -1;
 	string aux;
+	int op, op2;
+	bool error = false;
 	cout << "== Digite la fecha actual ==" << endl;
 	do {
 		if (d != -1) { ErrorDato(); }
@@ -1029,9 +1031,85 @@ void Interfaz::ReporteContratosPlazoFijoMas2(Aeropuerto& aero) {
 	Fecha* act = new Fecha(d, me, a);
 
 	system("CLS");
-	//////////////////////////Falta
+	cout << "====== Contratos de Plazo Fijo con mas de 2 anios ======" << endl;
+	cout << aero.ContratosPlazoMas2(*act) << endl;
+	cout << "========================================================" << endl;
+	if(aero.cantidadContratosPlazoMas2(*act) != 0){
+		do {
+			if (error) { ErrorDato(); }
+			cout << "Seleccione el numero de Contrato para cambiar: "; cin >> aux;
+			op = PasarStringAInt(aux);
+			error = true;
+		} while (op < 1 || op > aero.getCantidadContratos());
+		system("CLS");
 
+		if (aero.contratoN(op)->esPlazo() && aero.contratoN(op)->getFechaInicio()->mas2Anios(*act)) {
+			cout << "===============================================" << endl;
+			cout << "\t(1) Cambiar a Contrato Indefinido" << endl;
+			cout << "\t(2) Eliminar Contrato" << endl;
+			cout << "===============================================" << endl;
+			cout << "Digite la opcion: "; cin >> aux;
+			op2 = PasarStringAInt(aux);
+			if (op2 >= 2) {
+				if (aero.eliminarEmpleado(*aero.EmpleadoConContrato(*aero.contratoN(op)))  && aero.eliminarContrato(*aero.contratoN(op))) {
+					EliminadoExitoso();
+				}
+				else {
+					NoSePudoEliminar();
+				}
+			}
+			else {
+				string cod = "idf", des, codp, puesto;
+				double sal;
+				int d = -1, me = -1, a = -1;
+				do {
+					if (cod != "idf") { ErrorCodigoExistente(); }
+					cout << "()->Digite el codigo del contrato: "; cin >> cod;
+				} while (aero.contratoCod(cod) != NULL);
+				cout << "()->Digite la descripcion del contrato: "; cin >> des;
+				cout << "()->Digite el salario: "; cin >> aux;
+				sal = PasarStringAInt(aux);
+				//Fecha
+				do {
+					if (d != -1) { ErrorDato(); }
+					cout << "()->Digite el dia de inicio: "; cin >> aux;
+					d = PasarStringAInt(aux);
+				} while (d < 0 || d > 30);
+				do {
+					if (me != -1) { ErrorDato(); }
+					cout << "()->Digite el mes de inicio: "; cin >> aux;
+					me = PasarStringAInt(aux);
+				} while (me < 0 || me > 12);
+				do {
+					if (a != -1) { ErrorDato(); }
+					cout << "()->Digite el anio de inicio: "; cin >> aux;
+					a = PasarStringAInt(aux);
+				} while (a < 1000 || a > 3000);
+				Fecha* fecha1 = new Fecha(d, me, a);
+				//Plaza
+				cout << "()->Digite el codigo de la plaza: "; cin >> codp;
+				cout << "()->Digite el puesto de la plaza: "; cin >> puesto;
+				Plaza* plaza = new Plaza(codp, puesto);
 
+				Contrato* con = new ContratoIndefinido(cod, des, sal, *plaza, *fecha1);
+				
+				//Guardar Empleado
+				Empleado* emp = aero.EmpleadoConContrato(*aero.contratoN(op));
+
+				//Eliminar Contrato de Contenedor
+				aero.eliminarContrato(*aero.contratoN(op));
+				
+				//Aniadir Contrato a empleado
+				aero.agregarContrato(*con);
+				
+				emp->setContratoSinBorrar(*con);
+
+			
+			}
+		} else {
+			ErrorDato();
+		}
+	}
 
 	if (act != NULL) {
 		delete act;
@@ -1054,13 +1132,13 @@ void Interfaz::ReportePuertaMasGrande(Aeropuerto& aero) {
 void Interfaz::Consultar(Aeropuerto& aero) {
 	system("CLS");
 	string opaux; int op = 1;
-	cout << "=========================================" << endl;
-	cout << "==============  Consultar  ==============" << endl;
+	cout << "===============================================" << endl;
+	cout << "=================  Consultar  =================" << endl;
 	cout << "\t(1) Consultar Empleado por Cedula" << endl;
 	cout << "\t(2) Consultar Contrato por Codigo" << endl;
 	cout << "\t(3) Consultar Aeronave por Placa" << endl;
 	cout << "\t(4) Volver a Menu" << endl;
-	cout << "=========================================" << endl;
+	cout << "===============================================" << endl;
 	cout << "Digite lo que desea Consultar: ";
 	do {
 		if (op < 1 || op > 4) { ErrorDato(); }
