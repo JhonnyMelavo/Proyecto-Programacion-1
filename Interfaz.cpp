@@ -645,15 +645,18 @@ void Interfaz::IngresarComercial(Aeropuerto& aero) {
 	//Fecha
 	do {
 		if (d != -1) { ErrorDato(); }
-		cout << "()->Digite el dia de creacion: "; cin >> d;
+		cout << "()->Digite el dia de inicio: "; cin >> aux;
+		d = PasarStringAInt(aux);
 	} while (d < 0 || d > 30);
 	do {
 		if (me != -1) { ErrorDato(); }
-		cout << "()->Digite el mes de creacion: "; cin >> me;
+		cout << "()->Digite el mes de inicio: "; cin >> aux;
+		me = PasarStringAInt(aux);
 	} while (me < 0 || me > 12);
 	do {
 		if (a != -1) { ErrorDato(); }
-		cout << "()->Digite el anio de creacion: "; cin >> a;
+		cout << "()->Digite el anio de inicio: "; cin >> aux;
+		a = PasarStringAInt(aux);
 	} while (a < 1000 || a > 3000);
 	Fecha* fecha1 = new Fecha(d, me, a);
 	//
@@ -692,15 +695,18 @@ void Interfaz::IngresarCarga(Aeropuerto& aero) {
 	//Fecha
 	do {
 		if (d != -1) { ErrorDato(); }
-		cout << "()->Digite el dia de creacion: "; cin >> d;
+		cout << "()->Digite el dia de inicio: "; cin >> aux;
+		d = PasarStringAInt(aux);
 	} while (d < 0 || d > 30);
 	do {
 		if (me != -1) { ErrorDato(); }
-		cout << "()->Digite el mes de creacion: "; cin >> me;
+		cout << "()->Digite el mes de inicio: "; cin >> aux;
+		me = PasarStringAInt(aux);
 	} while (me < 0 || me > 12);
 	do {
 		if (a != -1) { ErrorDato(); }
-		cout << "()->Digite el anio de creacion: "; cin >> a;
+		cout << "()->Digite el anio de inicio: "; cin >> aux;
+		a = PasarStringAInt(aux);
 	} while (a < 1000 || a > 3000);
 	Fecha* fecha1 = new Fecha(d, me, a);
 	//
@@ -742,15 +748,18 @@ void Interfaz::IngresarMilitar(Aeropuerto& aero) {
 	//Fecha
 	do {
 		if (d != -1) { ErrorDato(); }
-		cout << "()->Digite el dia de creacion: "; cin >> d;
+		cout << "()->Digite el dia de inicio: "; cin >> aux;
+		d = PasarStringAInt(aux);
 	} while (d < 0 || d > 30);
 	do {
 		if (me != -1) { ErrorDato(); }
-		cout << "()->Digite el mes de creacion: "; cin >> me;
+		cout << "()->Digite el mes de inicio: "; cin >> aux;
+		me = PasarStringAInt(aux);
 	} while (me < 0 || me > 12);
 	do {
 		if (a != -1) { ErrorDato(); }
-		cout << "()->Digite el anio de creacion: "; cin >> a;
+		cout << "()->Digite el anio de inicio: "; cin >> aux;
+		a = PasarStringAInt(aux);
 	} while (a < 1000 || a > 3000);
 	Fecha* fecha1 = new Fecha(d, me, a);
 	//
